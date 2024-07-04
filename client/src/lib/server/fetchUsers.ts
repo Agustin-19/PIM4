@@ -43,8 +43,8 @@ export const fetchLoginUser = async (formData: LoginFormData): Promise<LoginResp
             const token = data.token; 
             const user = data.user;
 
-            localStorage.setItem('token', token); 
-            localStorage.setItem('user', JSON.stringify(user));
+            typeof window !== "undefined" && localStorage.setItem('token', token); 
+            typeof window !== "undefined" && localStorage.setItem('user', JSON.stringify(user));
             return { token, user, message: 'Login successful' };
         } else {
             const data = await response.json();

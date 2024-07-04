@@ -4,7 +4,7 @@ const ModeSwitch: React.FC = () => {
     const [isLightMode, setIsLightMode] = useState(() => {
         // Check local storage for the initial mode
         if (typeof window !== 'undefined') {
-            return localStorage.getItem('theme') === 'light';
+            return typeof window !== "undefined" && localStorage.getItem('theme') === 'light';
         }
         return false;
     });
@@ -13,11 +13,11 @@ const ModeSwitch: React.FC = () => {
         if (isLightMode) {
             document.documentElement.classList.add('light-mode');
             document.documentElement.classList.remove('dark-mode');
-            localStorage.setItem('theme', 'light');
+            typeof window !== "undefined" && localStorage.setItem('theme', 'light');
         } else {
             document.documentElement.classList.add('dark-mode');
             document.documentElement.classList.remove('light-mode');
-            localStorage.setItem('theme', 'dark');
+            typeof window !== "undefined" && localStorage.setItem('theme', 'dark');
         }
     }, [isLightMode]);
 

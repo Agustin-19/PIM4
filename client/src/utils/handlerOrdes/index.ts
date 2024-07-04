@@ -12,7 +12,7 @@ export const handleOrder = async (
 
     try {
         const products = cart.map((item) => item.id);
-        const token = localStorage.getItem('token');
+        const token = typeof window !== "undefined" && localStorage.getItem('token');
         const response = await fetch(`${API}orders`, {
             method: 'POST',
             headers: {

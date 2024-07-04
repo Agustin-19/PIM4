@@ -30,8 +30,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [orders, setOrders] = useState<IOrder[]>([]);
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('token');
-        const storedUser = localStorage.getItem('user');
+        const storedToken = typeof window !== "undefined" && localStorage.getItem('token');
+        const storedUser = typeof window !== "undefined" && localStorage.getItem('user');
         if (storedToken && storedUser) {
             setToken(storedToken);
             setUser(JSON.parse(storedUser));
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const getOrders = async () => {
         try {
-            const token: string = localStorage.getItem('token') || '';
+            const token: string = typeof window !== "undefined" && localStorage.getItem('token') || '';
 
             const data = await getUserOrders(token);
 
@@ -52,26 +52,26 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const logout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        typeof window !== "undefined" && localStorage.removeItem('token');
+        typeof window !== "undefined" && localStorage.removeItem('user');
         setToken(null);
         setUser(null);
     };
 
     const setToken = (token: string | null) => {
         if (token) {
-            localStorage.setItem("token", token);
+            typeof window !== "undefined" && localStorage.setItem("token", token);
         } else {
-            localStorage.removeItem("token");
+            typeof window !== "undefined" && localStorage.removeItem("token");
         }
         setTokenState(token);
     };
 
     const setUser = (user: any | null) => {
         if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
+            typeof window !== "undefined" && localStorage.setItem("user", JSON.stringify(user));
         } else {
-            localStorage.removeItem("user");
+            typeof window !== "undefined" && localStorage.removeItem("user");
         }
         setUserState(user);
     };
