@@ -1,5 +1,5 @@
 import { IProduct } from "@/interfaces/products.interface";
-const API = 'http://localhost:3001/'
+const API = 'https://pim4.onrender.com/'
 
 export const handleOrder = async (
     cart: IProduct[],

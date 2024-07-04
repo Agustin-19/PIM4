@@ -1,6 +1,6 @@
 import { IProduct } from '@/interfaces/products.interface';
 
-const API = 'http://localhost:3001/';
+const API = 'https://pim4.onrender.com/';
 
 export async function fetchProductById(id: string): Promise<IProduct> {
     const response = await fetch(`${API}products/${id}`, { cache: 'no-store' });
@@ -9,4 +9,10 @@ export async function fetchProductById(id: string): Promise<IProduct> {
     }
     const product = await response.json();
     return product;
+}
+
+export async function fetchProducts(): Promise<IProduct[]> {
+    const response = await fetch(`${API}products`, { cache: 'no-store' });
+    const products = await response.json();
+    return products;
 }

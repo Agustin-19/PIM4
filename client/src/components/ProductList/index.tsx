@@ -1,13 +1,8 @@
 import ProductCard from '@/components/ProductCard';
 import { IProduct } from '@/interfaces/products.interface';
+import { fetchProducts } from "@/lib/server/fetchProducts";
 
-const API = 'http://localhost:3001/';
 
-async function fetchProducts(): Promise<IProduct[]> {
-    const response = await fetch(`${API}products`, { cache: 'no-store' });
-    const products = await response.json();
-    return products;
-}
 
 const ProductList = async () => {
     const products = await fetchProducts();

@@ -2,7 +2,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { RegisterErrors, RegisterForm } from '@/interfaces/auth.interface';
 import { validateForm } from '@/helpers/validation.helpers';
-import { registerUser } from '@/services/auth.service';
+import { fetchRegisterUser } from '@/lib/server/fetchUsers';
 import { useRouter } from 'next/navigation';
 
 const Register = () => {
@@ -26,7 +26,7 @@ const Register = () => {
             setErrors(validationErrors);
             setSuccessMessage(null);
         } else {
-            const message = await registerUser(formData);
+            const message = await fetchRegisterUser(formData);
             if (message) {
                 setSuccessMessage(message);
                 setFormData({
