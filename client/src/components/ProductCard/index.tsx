@@ -21,13 +21,13 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                     fill={true}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     priority={true}
-                    className="rounded-t-lg"
+                    className=" "
                 />
             </div>
-            <h2 className="text-xl font-semibold">{product.name}</h2>
+            <h2 className="text-xl mt-4 font-semibold">{product.name}</h2>
             <p className="text-green-500 font-bold">${product.price}</p>
             <Link href={`/product/${product.id}`} passHref>
-                <p className="mt-2 p-2 bg-gray-500 rounded">Description{' =>'} </p>
+                <p className="mt-2 p-2 bg-gray-500 rounded">Descripcion</p>
             </Link>
         </div>
     );

@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { IProduct } from '@/interfaces/products.interface';
-const API = 'http://localhost:3001/';
+const API = 'https://pim4.onrender.com/';
 
 interface CartContextType {
     cart: IProduct[];

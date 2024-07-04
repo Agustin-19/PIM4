@@ -2,7 +2,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { LoginErrors, LoginFormData } from '@/interfaces/auth.interface';
 import { validateLoginForm } from '@/helpers/validation.helpers';
-import { loginUser } from '@/services/auth.service';
+import { fetchLoginUser } from '@/lib/server/fetchUsers';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 
@@ -24,7 +24,7 @@ const Login = () => {
             setErrors(validationErrors);
             setSuccessMessage(null);
         } else {
-            const { token, user, message } = await loginUser(formData);
+            const { token, user, message } = await fetchLoginUser(formData);
             if (message === 'Login successful') {
                 setSuccessMessage(message);
                 if (token && user) {
