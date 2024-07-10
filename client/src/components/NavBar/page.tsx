@@ -14,7 +14,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed w-full border-color border-b-2 border-t-2 shadow-remake">
+        <nav className="fixed w-full border-color border-b-2 border-t-2 shadow-remake z-30">
             <div className="daisy-navbar -mt-[12px] ">
                 <div className="flex mr-8 items-center">
                     <Link href={"/home"} className="daisy-btn daisy-btn-ghost text-xl">
