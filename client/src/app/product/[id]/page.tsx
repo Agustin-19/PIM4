@@ -47,7 +47,6 @@ const ProductDetail = ({ params }: ProductDetailProps) => {
 
     return (
         <div>
-            <h1>Detalle del Producto</h1>
             <div className="border border-color m-2 p-4 flex flex-col items-center rounded-lg shadow max-w-96">
                 <div className='relative object-contain w-40 h-40 rounded-t-lg'>
                     <Image

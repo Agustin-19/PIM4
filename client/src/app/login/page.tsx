@@ -55,7 +55,7 @@ const Login = () => {
 
     return (
         <div>
-            <h1>Iniciar Sesión</h1>
+            <h1 className='text-xl m-5'>Iniciar Sesión</h1>
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
             <form onSubmit={handleSubmit} className='text-black'>
                 <label className="m-2 daisy-input daisy-input-bordered flex daisy-items-center gap-2">
