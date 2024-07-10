@@ -1,20 +1,33 @@
 "use client";
 import { useCart } from "@/context/CartContext";
 import Link from 'next/link';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 import CartItem from "@/components/ItenCart";
 import CartSummary from "@/components/ItenSumCart";
 import { handleOrder } from "@/utils/handlerOrdes";
 import { IProduct } from "@/interfaces/products.interface";
+import { useRouter } from "next/navigation";
 
 const Cart: React.FC = () => {
+    const { token } = useAuth();
     const { cart, removeFromCart, clearCart } = useCart();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter()
+
+
+    useEffect(() => {
+        if (!token) {
+            router.push('/login');
+        }
+    }, [router, token]);
 
     const getTotal = () => {
         return cart.reduce((total: number, product: IProduct) => total + product.price, 0);
     };
+
+    if (!token) return null;
 
     if (cart.length === 0) {
         return (

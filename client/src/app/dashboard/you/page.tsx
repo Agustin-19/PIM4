@@ -1,12 +1,21 @@
 'use client'
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { user, logout, token } = useContext(AuthContext);
+    const router = useRouter();
 
-    // Si los datos del usuario no están disponibles, mostramos un mensaje de carga
+    useEffect(() => {
+        if (!token) {
+            router.push('/login');
+        }
+    }, [router, token]);
+
+
+    
     if (!user) {
         return <div>Cargando...</div>;
     }
